@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'styleedit.css' %}">
+    <title>Edit page </title>
+</head>
+<body>
+    <header>
+        <p class="name">Student Affairs</p>
+        <nav class="navigation_bar">
+            <a href="{% url 'index'%}">Home <i class="fa fa-home"></i></a>
+            <a href="{% url 'add'%}" >Add student <i class="fa fa-user-plus"></i></a>
+            <a href="{% url 'search'%}">Search <i class="fas fa-search"></i></a>
+            <a href="{% url 'view'%}"> View All Students<i class="fas fa-database"></i></i></a>
+        </nav>
+    </header>
+        <section>
+            <form id="form2" method="POST" action="#">
+                {% csrf_token %}
+                {{form.as_table}}
+                <div class="info1">
+                    <h1>Student information <i class="fa fa-user-alt"></i><br></h1>
+                    <br>
+                    <label for="name"> Student Name </label>
+                    <span id="nameerror"></span><br>
+                    <input id="name" type="text" name="sname" placeholder="Firstname Lastname" maxlength="35" value="{{student.sname}}"><br><br>
+        
+
+                    <label for="id">Student ID </label>
+                    <span id="iderror"></span><br>
+                    <input id="id" type="number" name="sid" placeholder="########" value="{{student.id}}"><br><br>
+        
+
+                    <label for="date">Student Birth date </label>
+                    <span id="dateerror"></span><br>
+                    <input id="date" type="date" name="sBirthdate" min="1990-01-01" max="2006-01-01" value="{{student.date}}"><br><br>
+        
+
+                    <label for="gpa">Student GPA </label>
+                    <span id="gpaerror"></span><br>
+                    <input id="gpa" type="number" step="0.1" min="0.0" max="4.0" name="sgpa" placeholder="Gpa" value="{{student.gpa}}"><br><br>
+
+                    <label for="gender">Student Gender </label>
+                    <span id="gendererror"></span><br>
+                    <input id="gender" type="text" name="sgender" placeholder="Gender" value="{{student.gen}}"><br><br>
+                </div>
+                
+                <div class="right">
+        
+                    <label for="level"> Student Level </label>
+                    <span id="levelerror"></span><br>
+                    <input id="level" type="text" placeholder="Level" name="slevel" value="{{student.level}}"><br><br>
+        
+                    <label for="stats">Student Status</label>
+                    <span id="statuserror"></span><br>
+                    <input id="stats" type="text" placeholder="State" name="sstate" value="{{student.state}}"><br><br>
+        
+                    <label for="dep"> Student Department </label><br>
+                    <input id="dep" type="text" name="sdepartment" value="{{student.department}}" readonly><br><br>
+        
+                    <label for="em"> Student Email</label><span id="emailerror"></span><br>
+                    <input id="em" type="Email" name="semail" placeholder="####@gmail.com"  value="{{student.mail}}"><br><br>
+        
+                    <label for="mnum"> Student Mobile number </label><span id="phoneerror"></span><br>
+                    <input id="mnum" type="tel" name="smobile" maxlength="11" placeholder="Phone Number"  value="{{student.mobile}}">
+                    <br><br>
+        
+                    <button title="Click here to Update Student data" class="submit" type="submit"  value="Update">Update data</button>
+                    
+                    
+                    <button class="del" title="Click here to Delete Student data" >
+                        <a class="link" onclick="return confirmation()" href="{% url 'DeleteStudent' student.id %}">Delete data</i></a></i></button>
+                    
+                </div>
+            </form>
+    </section>
+    <script>
+    function confirmation() {
+    var result = confirm("Delete This Student ?");
+    if (result) {
+        alert("Student Data Deleted Successfully");
+        return true;
+    }
+    else
+    {
+        alert("Deletion Canceled");
+        return false;
+    }
+}
+src="{% static 'edit.js'%}"
+    </script>
+</body>
+
+</html>

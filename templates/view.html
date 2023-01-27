@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'styleview.css' %}">
+    <title>View All Student </title>
+</head>
+<body>
+    <header>
+        <p class="name">Student Affairs</p>
+        <nav class="navigation_bar">
+            <a href="{% url 'index'%}">Home <i class="fa fa-home"></i></a>
+            <a href="{% url 'add'%}" >Add student <i class="fa fa-user-plus"></i></a>
+            <a href="{% url 'search'%}" >Search <i class="fas fa-search"></i></a>
+            <a href="{% url 'view'%}"> View All Students<i class="fas fa-database"></i></i></a>
+        </nav>
+    </header>
+<section>
+    <input type="text" id="search" class="srch" onkeyup="myFunction()" placeholder="Search Student by Name.." title="Type in a name" autofocus>
+        <table id="myTable">
+            <thead>
+                <tr>
+                    <td>Student Name</td>
+                    <td>ID</td>
+                    <td>Department</td>
+                    <td>Level</td>
+                    <td>GPA</td>
+                    <td>Status</td>
+                    <td>Edit <i class="fas fa-edit"></i></td>
+                </tr>
+            </thead>
+            <tbody>
+                 {% for x in student %}
+                 {% if x.state == 'active' or x.state == 'inactive' %}
+                 <tr>
+                    <td>{{x.sname}}</td>
+                    <td>{{x.id}}</td>
+                    <td>{{x.department}}</td>
+                    <td>{{x.level}}</td>
+                    <td>{{x.gpa}}</td>
+                    <td>{{x.state}}<button class="apply" title="click here to change Student Status" onclick="return show_confirm()">
+                    <a class="link" href ="{% url 'changestate' x.id %}">Change</a></button></td>
+                    <td><a href="{% url 'edit' x.id %}"><i class="fas fa-edit"></i></a></td>
+                 </tr>
+                  {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+</section>
+<script src="{% static 'view.js'%}"></script>
+</body>
+</html>
+    

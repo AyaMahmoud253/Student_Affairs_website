@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'stylenewhome.css'%}">
+    <title>New Home Page </title>
+    <script>
+        var href = window.location.href;
+    </script>
+</head>
+
+<body>
+    <header>
+        <p>Welcome to Home Page</p>
+    </header>
+    <section>
+        <button class="button1" type="button"><a href="{% url 'index'%}">Students Affairs <i class="fa fa-university"></i></a></button>
+        <button class="button2" type="button" onclick="void(0)">Higher Studies <i class="fas fa-graduation-cap"></i></button>
+        <button class="button3" type="button" onclick="void(0)">Human Resources <i class="fa fa-user"aria-hidden="true"></i></button>
+        <button class="button4" type="button" onclick="void(0)">Laboratory Tracking <i class='fas fa-microscope'></i></button>
+    </section>
+</body>
+</html>

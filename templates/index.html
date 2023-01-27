@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'stylehome.css'%}">
+    <title>Home Page </title>
+</head>
+<body>
+    <header>
+        <p class="name">Student Affairs</p>
+        <nav class="navigation_bar">
+            <a href="{% url 'index'%}">Home <i class="fa fa-home"></i></a>
+            <a href="{% url 'add'%}" >Add student <i class="fa fa-user-plus"></i></a>
+            <a href="{% url 'search'%}">Search <i class="fas fa-search"></i></a>
+            <a href="{% url 'view'%}"> View All Students<i class="fas fa-database"></i></i></a>
+        </nav>
+    </header>
+    <section class="welcome" >
+            <h1>Welcome to <br></h1>
+            <h2>student affairs website <i class="fas fa-university"></i> </h2>
+    </section>
+</body>
+</html>

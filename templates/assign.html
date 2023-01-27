@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'styleassign.css'%}">
+    <title>Assign Student page </title>
+    <script src="{% static 'js/adds.js'%}"></script>
+</head>
+<body>
+    <header>
+        <p class="name">Student Affairs</p>
+        <nav class="navigation_bar">
+            <a href="{% url 'index'%}">Home <i class="fa fa-home"></i></a>
+            <a href="{% url 'add'%}" >Add student <i class="fa fa-user-plus"></i></a>
+            <a href="{% url 'search'%}" >Search <i class="fas fa-search"></i></a>
+            <a href="{% url 'view'%}"> View All Students<i class="fas fa-database"></i></i></a>
+        </nav>
+    </header>
+    <section >
+        <form id="MyForm" method="POST" action="#">
+
+                {% csrf_token %}
+                {{form.as_table}}
+                
+                <label for="name"> Student Name </label><br>
+                <input id="name" type="text" name="sname" readonly placeholder="Firstname Lastname" maxlength="35" value="{{student.sname}}"><br><br>
+
+
+                <label for="id">Student ID </label><br>                
+                <input id="id" type="number"  readonly name="sid" placeholder="########" value="{{student.id}}"><br><br>
+
+
+                <label for="gpa">Student GPA </label><br>
+                <input id="gpa" type="number" readonly name="sgpa" placeholder="Gpa" value="{{student.gpa}}"><br><br>
+
+                <label for="level"> Student Level </label><br>
+                <input id="level" type="text" readonly placeholder="Level" name="slevel" value="{{student.level}}"><br><br>
+
+                
+                <label for="dep"> Student Department </label>
+                <select id="dep" name="sdepartment" >
+                    {% if student.department == "General" %}
+                    <option value="General" selected>General </option>
+                    <option value="Information System">Information System</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Artificial Inteligence">Artificial Inteligence</option>
+                    {% endif %}
+                    {% if student.department == "Information System" %}
+                    <option value="General">General</option>
+                    <option value="Information System" selected >Information System</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Information Technology" >Information Technology</option>
+                    <option value="Artificial Inteligence">Artificial Inteligence</option>
+                    {% endif %}
+                    {% if student.department == "Computer Science" %}
+                    <option value="General">General</option>
+                    <option value="Information System">Information System</option>
+                    <option value="Computer Science" selected>Computer Science</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Artificial Inteligence">Artificial Inteligence</option>
+                    {% endif %}
+                    {% if student.department == "Information Technology" %}
+                    <option value="General">General</option>
+                    <option value="Information System" >Information System</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Information Technology" selected>Information Technology</option>
+                    <option value="Artificial Inteligence">Artificial Inteligence</option>
+                    {% endif %}
+                    {% if student.department == "Artificial Inteligence" %}
+                    <option value="General">General</option>
+                    <option value="Information System" >Information System</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Artificial Intelegince" selected>Artificial Inteligince</option>
+                    {% endif %}
+                </select>
+                
+                <button type="submit" class="sub" onclick="return myFunction()"> Assign </button>
+        
+                
+                <script>
+                    function myFunction()
+                    {
+                        var result = confirm("Are you sure you want to save changes?");
+                        
+                        if (result &&( "{{student.level}}" == 3 || "{{student.level}}" == 3  ) ) {
+                        
+                            alert("Assign Department Done Successfully");
+                            return true;
+                        }
+                        else if (result && "{{student.level}}" == 1 || "{{student.level}}" == 2 )
+                        {
+                            alert("Assign Canceled , Student Level is less than 3 ");
+                            return false;
+                        }
+                        else
+                        {
+                            alert("Assign Canceled");
+                            return false;
+                        }
+                    }
+                </script>
+        </form>  
+    </section>
+</body>               
+</html>

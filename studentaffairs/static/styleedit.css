@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: rgb(207, 206, 206);
+    width: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 200px;
+}
+
+.name {
+    text-decoration: none;
+    color: darkblue;
+    font-weight: 700;
+    font-size: xx-large;
+}
+
+.navigation_bar a {
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+    font-size: large;
+    padding-left: 20px;
+
+}
+
+.navigation_bar a:hover {
+    color: grey;
+}
+
+input {
+    font-weight: 500;
+    font-size: medium;
+    border-radius: 10px;
+}
+
+.info1 {
+    width: 50%;
+    height: 100vh;
+    float: left;
+    padding: 180px 180px;
+}
+
+body {
+    background-color: rgb(238, 238, 238);
+}
+
+.info1 h1 {
+    color: rgb(0, 0, 104);
+    font-size: xx-large;
+}
+
+.info1 label {
+    font-weight: 500;
+    font-size: large;
+}
+
+.info1 p {
+    font-weight: 500;
+    font-size: large;
+}
+
+.right {
+    width: 50%;
+    height: 100vh;
+    float: right;
+    padding: 250px 8px;
+}
+
+.right p {
+    font-weight: 500;
+    font-size: large;
+}
+
+.right label {
+    font-weight: 500;
+    font-size: large;
+}
+
+.right select {
+    border-radius: 10px;
+    color: black;
+    font-size: large;
+}
+.submit{
+    background-color:darkblue;
+    color: white;
+    font-weight: 500;
+    border-radius: 6px;
+    padding: 4px 20px;
+    font-size: 12px;
+}
+.del{
+    background-color:darkblue;
+    color: white;
+    font-weight: 500;
+    border-radius: 6px;
+    padding: 4px 20px;
+    font-size: 12px;
+    margin-left:20px ; 
+}
+button:hover{
+    background-color: darkgray;
+    transform: scale(1.1);
+}
+.link{
+    text-decoration: none;
+    color: white;
+}
+span {
+    color: rgb(255 4 4);
+    font-weight: 400;
+    font-size: 12px;
+}

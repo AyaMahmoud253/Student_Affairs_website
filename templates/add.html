@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'styleadd.css'%}">
+    <title>Add Student page</title>
+</head>
+
+<body>
+    <header>
+        <p class="name">Student Affairs</p>
+        <nav class="navigation_bar">
+            <a href="{% url 'index'%}">Home <i class="fa fa-home"></i></a>
+            <a href="{% url 'add'%}">Add student <i class="fa fa-user-plus"></i></a>
+            <a href="{% url 'search'%}"> Search <i class="fas fa-search"></i></a>
+            <a href="{% url 'view'%}"> View All Students<i class="fas fa-database"></i></i></a>
+        </nav>
+    </header>
+    <section>
+        <form id="form" action="#" method="POST">{%csrf_token%}
+            <div class="info1">
+                <h1>Student information <i class="fa fa-user-alt"></i><br></h1>
+                <br>
+                <label for="name"> Student Name </label>
+                <span id="nameerror"></span><br>
+                <input id="name" type="text" name="sname" placeholder="Firstname Lastname" maxlength="35"><br><br>
+
+                <label for="id">Student ID </label>
+                <span id="iderror"></span><br>
+                <input id="id" type="number" name="sid" placeholder="########"><br><br>
+
+                <label for="date">Student Birth date </label>
+                <span id="dateerror"></span><br>
+                <input id="date" type="date" name="sBirthdate" min="1990-01-01" max="2006-01-01"><br><br>
+
+                <label for="gpa">Student GPA </label>
+                <span id="gpaerror"></span><br>
+                <input id="gpa" type="number" step="0.1" min="0.0" max="4.0" name="sgpa" placeholder="Gpa"><br><br>
+
+                <p> Student Gender <span id="gendererror"></span> </p>
+                <input id="fem" type="radio" name="sgender" value="female">
+                <label for="fem">Female </label><br>
+                <input id="ma" type="radio" name="sgender" value="male">
+                <label for="ma">Male</label><br><br>
+                
+            </div>
+            <div class="right">
+
+                <label for="level"> Student Level </label>
+                <select id="level" name="slevel">
+                    <option value="">Select Level</option>
+                    <option value="1">Level1</option>
+                    <option value="2">Level2</option>
+                    <option value="3">Level3</option>
+                    <option value="4">Level4</option>
+                </select>
+                <span id="levelerror"></span><br><br>
+
+                <p>Student Status <span id="statuserror"></span> </p>
+                <input id="act" type="radio" name="sstate" value="active">
+                <label for="act">Active </label><br>
+                <input id="inact" type="radio" name="sstate" value="inactive">
+                <label for="inact">Inactive</label><br><br>
+
+                <label for="dep"> Student Department </label>
+                <select id="dep" name="sdepartment">
+                    <option value="">Select Department</option>
+                    <option value="General">General</option>
+                    <option value="Information System">Information System</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Artificial Inteligence">Artificial Inteligence</option>
+                </select>
+                <span id="deperror"></span><br><br>
+
+                <label for="em"> Student Email</label><span id="emailerror"></span><br>
+                <input id="em" type="email" name="semail" placeholder="####@gmail.com"><br><br>
+
+                <label for="mnum"> Student Mobile number </label><span id="phoneerror"></span><br>
+                <input id="mnum" type="tel" name="smobile" maxlength="11" placeholder="Phone Number"><br>
+
+                <input class="add" type="submit" value="Add" name="Add">
+                <input class="reset" type="reset" value="Reset" name="reset" onclick="clearerrors()">
+            </div>
+        </form>
+    </section>
+    <script src="{% static 'adds.js'%}"></script>
+</body>
+</html>
+
